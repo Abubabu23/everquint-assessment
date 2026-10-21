@@ -39,3 +39,23 @@ Residual connections improved accuracy by about 5.9 points with fewer parameters
 1. Open the notebook in Google Colab, set Runtime to GPU (T4)
 2. Install dependencies if needed: `pip install -r requirements.txt`
 3. Run all cells in order (training takes about 5-10 minutes per model)
+
+## Deployment: FastAPI (optional extension)
+The trained ResCNN is served with FastAPI.
+
+Files: `model.py` (model definition), `api.py` (API)
+
+Run (from the `cifar10` folder):
+```
+pip install -r requirements.txt
+uvicorn api:app --reload
+```
+Open http://127.0.0.1:8000/docs (Swagger UI) to test.
+
+Endpoints:
+- `GET /health` - returns `{"status": "ok"}`
+- `POST /predict` - upload an image, returns the top 3 classes with confidence
+
+![API demo](api_demo.png)
+
+Note: the model is trained on 32x32 CIFAR-10 images, so it works best on clear photos of the 10 classes.
