@@ -1,0 +1,477 @@
+[
+  {
+    "level": "easy",
+    "question": "If a train leaves at 14:30 and arrives at 18:05, how long is the journey?",
+    "expected": [
+      "3 hours 35",
+      "3 hours and 35",
+      "3h 35",
+      "215 minutes"
+    ],
+    "result": {
+      "answer": "3 hours 35 minutes",
+      "status": "success",
+      "reasoning_visible_to_user": "The journey duration is calculated by finding the difference between the departure and arrival times, totaling 3 hours and 35 minutes.",
+      "metadata": {
+        "plan": "Extract departure time 14:30 and arrival time 18:05 -> Convert both times into minutes from midnight -> Subtract departure minutes from arrival minutes -> Convert the resulting minutes into hours and minutes format -> Verify the calculation and ensure the output is in hours and minutes",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 3 hours 35 minutes."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Time calculations are valid and non-negative."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "The steps correctly convert times to minutes, calculate the difference, and convert back."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "easy",
+    "question": "Alice has 3 red apples and twice as many green apples as red. How many apples does she have in total?",
+    "expected": [
+      "9"
+    ],
+    "result": {
+      "answer": "9 apples",
+      "status": "success",
+      "reasoning_visible_to_user": "Alice has 3 red apples and 6 green apples, making a total of 9 apples.",
+      "metadata": {
+        "plan": "Extract the number of red apples as 3 -> Calculate the number of green apples by multiplying the red apples by 2 -> Add the number of red and green apples together to find the total -> Double-check that all counts are non-negative and the final sum is correct",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 9 apples."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Counts are non-negative whole numbers and totals add up correctly."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "Steps correctly calculate green apples as 3 * 2 = 6 and total as 3 + 6 = 9."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "easy",
+    "question": "A shop sells pens at 12 rupees each. How much do 7 pens cost?",
+    "expected": [
+      "84"
+    ],
+    "result": {
+      "answer": "84 rupees",
+      "status": "success",
+      "reasoning_visible_to_user": "Multiplying the price of 12 rupees per pen by 7 pens gives a total cost of 84 rupees.",
+      "metadata": {
+        "plan": "Extract the price per pen (12 rupees) and the quantity of pens (7) -> Multiply the price per pen by the quantity to get the total cost -> Format the result with the currency unit 'rupees' -> Double-check the multiplication",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 84 rupees."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Counts and costs are non-negative numbers."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "The calculation 12 * 7 = 84 correctly supports the final answer."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "easy",
+    "question": "A rectangle is 8 cm long and 5 cm wide. What is its area?",
+    "expected": [
+      "40"
+    ],
+    "result": {
+      "answer": "40 cm²",
+      "status": "success",
+      "reasoning_visible_to_user": "The area of a rectangle is found by multiplying its length by its width.",
+      "metadata": {
+        "plan": "Extract length = 8 cm and width = 5 cm -> Compute area by multiplying length by width -> Use square centimeters for the unit -> Verify the calculation",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers represent 40 square centimeters."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Dimensions and area are positive numbers."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "8 * 5 = 40 correctly calculates the area."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "easy",
+    "question": "Ravi had 50 rupees. He spent 18 rupees on a notebook and 12 rupees on a pen. How much money is left?",
+    "expected": [
+      "20"
+    ],
+    "result": {
+      "answer": "20 rupees",
+      "status": "success",
+      "reasoning_visible_to_user": "After spending 30 rupees on a notebook and a pen, Ravi has 20 rupees left out of his 50 rupees.",
+      "metadata": {
+        "plan": "Extract initial amount of money: 50 rupees -> Extract notebook cost: 18 rupees and pen cost: 12 rupees -> Compute total money spent by adding notebook and pen costs -> Subtract total spent from the initial amount to find money left -> Check that the final amount is non-negative and in rupees",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 20 rupees."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Money amounts are non-negative and correctly subtracted."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "The steps correctly calculate total spent and subtract from the initial amount to reach the final answer."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "easy",
+    "question": "A bus leaves at 09:15 and the journey takes 2 hours 50 minutes. At what time does it arrive?",
+    "expected": [
+      "12:05"
+    ],
+    "result": {
+      "answer": "12:05",
+      "status": "success",
+      "reasoning_visible_to_user": "Adding 2 hours and 50 minutes to 09:15 results in an arrival time of 12:05.",
+      "metadata": {
+        "plan": "Extract departure time 09:15 and journey duration 2 hours 50 minutes -> Add the hours of the duration to the departure hour -> Add the minutes of the duration to the departure minute and adjust hours if minutes exceed 59 -> Format the resulting arrival time as HH:MM -> Double-check the arithmetic and time rollover",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both the proposed answer and the independent answer are 12:05."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Time calculations use valid hours and minutes, with proper minute rollover."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "Steps correctly add 2 hours and 50 minutes to 09:15 resulting in 12:05 without contradictions."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "easy",
+    "question": "There are 24 students in a class and one third of them are absent. How many students are present?",
+    "expected": [
+      "16"
+    ],
+    "result": {
+      "answer": "16 students",
+      "status": "success",
+      "reasoning_visible_to_user": "With 8 students absent out of 24, there are 16 students present.",
+      "metadata": {
+        "plan": "Extract total students = 24 and absent fraction = 1/3 -> Compute the number of absent students by multiplying 24 by 1/3 -> Compute the number of present students by subtracting absent students from the total -> Check that the number of present students is a non-negative integer",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 16 students."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Student counts are valid non-negative integers."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "Calculations correctly find absent students as 8 and subtract from 24 to get 16."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "easy",
+    "question": "A car travels at 60 km per hour for 2.5 hours. How far does it travel?",
+    "expected": [
+      "150"
+    ],
+    "result": {
+      "answer": "150 km",
+      "status": "success",
+      "reasoning_visible_to_user": "Multiplying the speed of 60 km/h by the time of 2.5 hours results in a distance of 150 kilometers.",
+      "metadata": {
+        "plan": "Extract speed as 60 km/h and time as 2.5 hours -> Compute distance by multiplying speed by time -> Express the final distance in kilometers -> Check the calculation and units",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 150 km."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Speed, time, and distance are valid positive numbers."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "Distance = Speed x Time (60 * 2.5 = 150) correctly supports the final answer."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "tricky",
+    "question": "A meeting needs 60 minutes. There are free slots: 09:00-09:30, 09:45-10:30, 11:00-12:00. Which slots can fit the meeting?",
+    "expected": [
+      "11:00"
+    ],
+    "result": {
+      "answer": "11:00-12:00",
+      "status": "success",
+      "reasoning_visible_to_user": "Only the 11:00-12:00 time slot provides the required 60 minutes for the meeting.",
+      "metadata": {
+        "plan": "Extract the required meeting duration of 60 minutes -> List all available free time slots with their start and end times -> Calculate the duration for each individual free slot -> Compare each slot duration to the 60-minute requirement to identify matches -> Verify the matching slots format and ensure no scheduling overlaps",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both the proposed answer and independent answer are 11:00-12:00."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Durations and time ranges are valid and properly calculated."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "The step-by-step duration checks logically support the final selected slot."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "tricky",
+    "question": "A meeting needs 45 minutes. There are free slots: 10:00-10:45, 11:00-11:30. Which slots can fit the meeting?",
+    "expected": [
+      "10:00"
+    ],
+    "result": {
+      "answer": "10:00-10:45",
+      "status": "success",
+      "reasoning_visible_to_user": "Only the 10:00-10:45 slot is at least 45 minutes long.",
+      "metadata": {
+        "plan": "Extract the required meeting duration of 45 minutes -> List all available free time slots with their start and end times -> Calculate the duration of each free slot -> Compare each slot's duration against the 45-minute requirement -> Format the final answer to list the valid slots",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 10:00-10:45."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Durations and time slots are valid and correctly calculated."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "Steps correctly evaluate slot durations and compare them to the required 45 minutes."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "tricky",
+    "question": "A night train leaves at 22:45 and arrives at 05:10 the next day. How long is the journey?",
+    "expected": [
+      "6 hours 25",
+      "6 hours and 25",
+      "6h 25",
+      "385 minutes"
+    ],
+    "result": {
+      "answer": "6 hours 25 minutes",
+      "status": "success",
+      "reasoning_visible_to_user": "The night train journey from 22:45 to 05:10 the next day takes 6 hours and 25 minutes.",
+      "metadata": {
+        "plan": "Extract departure time 22:45 and arrival time 05:10 -> Account for the overnight change by adding 24 hours to the arrival time -> Convert both times to minutes from midnight -> Subtract departure minutes from arrival minutes -> Convert the result into hours and minutes -> Check that the duration is positive and formatted correctly",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers represent the exact same duration (6 hours 25 minutes)."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Time values and duration are valid and positive."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "The calculation correctly determines the elapsed time between 22:45 and 05:10 the next day."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "tricky",
+    "question": "A jacket costs 2000 rupees. It is discounted by 20%, and then a further 10% is taken off the discounted price. What is the final price?",
+    "expected": [
+      "1440",
+      "1,440"
+    ],
+    "result": {
+      "answer": "1440 rupees",
+      "status": "success",
+      "reasoning_visible_to_user": "After applying a 20% discount and a subsequent 10% discount, the final price is 1440 rupees.",
+      "metadata": {
+        "plan": "Extract the initial jacket price of 2000 rupees -> Compute the price after the first 20% discount -> Compute the final price after a further 10% discount on the discounted price -> Ensure the final unit is in rupees -> Double-check the calculation steps for accuracy",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 1440 rupees."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "Prices and percentages are within valid ranges."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "The step-by-step calculations correctly apply successive discounts and lead to the final answer."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  },
+  {
+    "level": "tricky",
+    "question": "A bat and a ball cost 110 rupees in total. The bat costs 100 rupees more than the ball. How much does the ball cost?",
+    "expected": [
+      "5"
+    ],
+    "result": {
+      "answer": "5 rupees",
+      "status": "success",
+      "reasoning_visible_to_user": "The ball costs 5 rupees and the bat costs 105 rupees, totaling 110 rupees with a difference of 100 rupees.",
+      "metadata": {
+        "plan": "Extract total cost 110 rupees and price difference 100 rupees -> Set up algebraic equations where bat + ball = 110 and bat - ball = 100 -> Solve for the cost of the ball -> Double-check the sum and difference match the original problem statement -> Format the final answer in rupees",
+        "checks": [
+          {
+            "check_name": "independent_match",
+            "passed": true,
+            "details": "Both answers are 5 rupees."
+          },
+          {
+            "check_name": "constraints",
+            "passed": true,
+            "details": "The cost of the ball is non-negative and all conditions are satisfied."
+          },
+          {
+            "check_name": "consistency",
+            "passed": true,
+            "details": "The algebraic steps logically lead to x = 5."
+          }
+        ],
+        "retries": 0
+      }
+    },
+    "verifier_passed": true,
+    "retried": false,
+    "correct": true
+  }
+]
