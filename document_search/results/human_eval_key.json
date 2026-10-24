@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Sigmoid function",
+    "A": "baseline",
+    "B": "llm"
+  },
+  {
+    "title": "Population model (evolutionary algorithm)",
+    "A": "llm",
+    "B": "baseline"
+  },
+  {
+    "title": "AI effect",
+    "A": "baseline",
+    "B": "llm"
+  },
+  {
+    "title": "Unsupervised learning",
+    "A": "llm",
+    "B": "baseline"
+  },
+  {
+    "title": "Concept drift",
+    "A": "llm",
+    "B": "baseline"
+  },
+  {
+    "title": "KataGo",
+    "A": "llm",
+    "B": "baseline"
+  },
+  {
+    "title": "WaveNet",
+    "A": "baseline",
+    "B": "llm"
+  },
+  {
+    "title": "Learnable function class",
+    "A": "llm",
+    "B": "baseline"
+  },
+  {
+    "title": "Iris flower data set",
+    "A": "llm",
+    "B": "baseline"
+  },
+  {
+    "title": "Ordinal regression",
+    "A": "llm",
+    "B": "baseline"
+  }
+]

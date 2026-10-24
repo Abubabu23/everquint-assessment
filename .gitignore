@@ -1,0 +1,19 @@
+﻿# virtual environments
+.venv/
+.venv1/
+venv/
+
+# secrets
+.env
+*.env
+
+# python
+__pycache__/
+*.pyc
+
+# editor / cache
+.vscode/
+.llm_cache.json
+
+# large generated data
+document_search/data/

@@ -1,0 +1,9 @@
+﻿google-generativeai==0.8.6
+groq==1.7.0
+numpy==2.5.4
+python-dotenv==1.2.4
+rank-bm25==0.2.2
+requests==2.34.2
+rouge_score==0.1.2
+sentence-transformers==6.2.0
+streamlit==1.66.1
