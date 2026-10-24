@@ -1,6 +1,13 @@
 # Task 5: Document Search + Summarization
 
-Hybrid search (BM25 + dense embeddings + RRF) over a 1000-article AI/ML Wikipedia corpus, with LLM and lead-3 summaries, evaluated with ROUGE and a blind human A/B test. A Streamlit app ties it together.
+Hybrid search (BM25 + dense embeddings + RRF) over a 1000-article AI/ML Wikipedia corpus, with LLM and lead-N summaries, evaluated with ROUGE and a blind human A/B test. A Streamlit app ties it together. Full analysis in [REPORT.md](REPORT.md).
+
+## Features
+
+- Hybrid search: BM25 + MiniLM chunk embeddings + Reciprocal Rank Fusion, with a switch to compare `bm25`, `dense` and `hybrid`
+- Top-N results (1-10) with title, link, score and best-matching excerpt
+- Summaries on demand: LLM summary next to a lead-N baseline, with adjustable summary length (1-8 sentences)
+- Evaluation: Hit@5 / MRR for search, ROUGE and blind human A/B rating for summaries
 
 ## Setup
 
@@ -24,7 +31,7 @@ GROQ_MODEL=openai/gpt-oss-120b
 
 ## Run
 
-Run everything from this folder (paths are relative).
+Run everything from this folder (paths are relative). The `data/` folder is not in git, so run `collect_data.py` first.
 
 ```powershell
 python collect_data.py          # downloads Wikipedia articles -> data/documents.json
@@ -38,6 +45,14 @@ python rate_human_eval.py       # rate in terminal, prints averages
 
 Warning: `make_human_eval.py` reshuffles A/B and overwrites the key. Do not re-run it after rating.
 
+## Using the web app
+
+1. Type a query (for example `how does backpropagation work`).
+2. Sidebar: choose the search mode, the number of results and the summary length.
+3. Open a result and click **Summarize** to see the lead-N baseline and the LLM summary side by side.
+
+The first start takes longer because the model loads and, on a fresh clone, the embeddings are built once.
+
 ## Files
 
 | File | Purpose |
@@ -45,12 +60,14 @@ Warning: `make_human_eval.py` reshuffles A/B and overwrites the key. Do not re-r
 | `collect_data.py` | Wikipedia API crawler (categories + seed titles) |
 | `search.py` | `HybridSearcher`: BM25, MiniLM chunk embeddings (cached), RRF fusion |
 | `llm.py` | `generate()` wrapper, provider chosen via `.env` |
-| `summarize.py` | `clean_text`, lead-3 baseline, LLM summary |
+| `summarize.py` | `clean_text`, lead-N baseline, LLM summary |
 | `evaluate_search.py` | Retrieval evaluation on 30 queries |
 | `evaluate_summaries.py` | ROUGE evaluation on 20 docs |
 | `make_human_eval.py`, `rate_human_eval.py` | Blind human evaluation |
 | `app.py` | Streamlit UI |
-| `REPORT.md` | Full results and analysis |
+| `REPORT.md` | Full report: preprocessing, methodology, evaluation, challenges |
+| `screenshots/` | UI screenshots |
+| `results/` | Summaries, human ratings and key |
 
 ## Design choices
 
@@ -58,7 +75,7 @@ Warning: `make_human_eval.py` reshuffles A/B and overwrites the key. Do not re-r
 - **Hybrid retrieval:** BM25 handles exact keywords, dense embeddings handle paraphrases, Reciprocal Rank Fusion (k=60) merges the rankings without score normalization.
 - **Chunking:** 150-word chunks with 120-word step for embeddings; the best chunk becomes the result snippet. Embeddings are cached in `data/chunk_embeddings.npy`.
 - **Text cleaning:** Wikipedia LaTeX (`{\displaystyle ...}`) is removed before summarization.
-- **Summaries:** lead-3 extractive baseline vs LLM abstractive summary.
+- **Summaries:** lead-N extractive baseline vs LLM abstractive summary, same length for both.
 
 ## Results
 
@@ -77,8 +94,10 @@ Summaries (20 docs, intro paragraph as reference):
 | Lead-3 | 0.274 | 0.066 | 0.155 |
 | LLM | 0.305 | 0.051 | 0.153 |
 
-Human eval (10 docs, blind A/B, 1-5): lead-3 avg 4.60, LLM avg 4.80. Details in `REPORT.md`.
+Human eval (10 docs, blind A/B, 1-5): lead-3 avg 4.60, LLM avg 4.80.
 
 ## Screenshots
 
-See `screenshots/`.
+![Search results](screenshots/01_search_results.png)
+![Summaries](screenshots/02_summarize.png)
+![Search modes](screenshots/03_modes.png)
